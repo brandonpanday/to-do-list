@@ -67,6 +67,16 @@ let loadProjects = () => {
 }
 let loadMain = () => {
   let main = document.createElement('main');
+  let infoBar = document.createElement('div');
+  infoBar.classList.add('info-bar');
+  let activeProject = document.createElement('span');
+  activeProject.innerText = "Project Title";
+  activeProject.classList.add('active-project');
+  infoBar.append(activeProject);
+
+  let taskContainer = document.createElement('section');
+  taskContainer.classList.add('task-container');
+  main.append(infoBar, taskContainer);
   return main;
 }
 document.body.append(container());

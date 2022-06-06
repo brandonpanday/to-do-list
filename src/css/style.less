@@ -100,5 +100,28 @@ main {
   width: ~"calc(100vw - 300px)";
   height: 100vh;
   background-color: #f9f9f9;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+
+  .info-bar {
+    width: 500px;
+    height: 1.5em;
+    margin: 2em 0 1em 3em;
+    align-self: flex-start;
+
+    .active-project {
+      color: #3084F2;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 1.1em;
+    }
+  }
+
+  .task-container {
+    width: 550px;
+    height: 550px;
+    background-color: red;
+    margin: 1em 3em;
+  }
 }

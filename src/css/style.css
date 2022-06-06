@@ -106,5 +106,31 @@ main {
   width: calc(100vw - 300px);
   height: 100vh;
   background-color: #f9f9f9;
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+main .info-bar {
+  width: 500px;
+  height: 1.5em;
+  margin: 2em 0 1em 3em;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+main .info-bar .active-project {
+  color: #3084F2;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 1.1em;
+}
+main .task-container {
+  width: 550px;
+  height: 550px;
+  background-color: red;
+  margin: 1em 3em;
 }
