@@ -106,17 +106,23 @@ let addProjectsToDom = () => {
 let loadAddTask = () => {
   let addContainer = document.createElement('div');
   addContainer.classList.add('add-container');
+  let header = document.createElement('div');
+  header.classList.add('task-header');
   let noteInput = document.createElement('input');
   noteInput.type = 'text';
   noteInput.classList.add('note-input');
+  let btnContainer = document.createElement('div');
+  btnContainer.classList.add('btn-container');
   let btnAdd = document.createElement('button');
   btnAdd.innerText = "Add";
   btnAdd.classList.add('btn-add');
   let btnCancel = document.createElement('button');
   btnCancel.innerText = "Cancel";
   btnCancel.classList.add('btn-cancel');
-
-  addContainer.append(noteInput, btnAdd, btnCancel);
+  btnContainer.append(btnAdd, btnCancel);
+  let footer = document.createElement('div');
+  footer.classList.add('task-footer');
+  addContainer.append(header, noteInput, btnContainer, footer);
   return addContainer;
 }
 

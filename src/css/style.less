@@ -148,19 +148,44 @@ main {
 }
 
 .add-container {
-  display: flex;
   position: absolute;
-  top: 100px;
+  top: 200px;
   margin: 0 auto;
   z-index: 9999;
   background-color: red;
-  padding: 20px 40px;
+  height: fit-content;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .note-input {
-    width: 300px;
+  .task-header {
+    width: 100%;
+    height: 80px;
+    background-color: green;
   }
-  button {
-    width:fit-content;
-    padding: 0.75em 1.25em;
+  .note-input {
+    width: 80%;
+    border: 1px solid black;
+    height: 2em;
+    margin: 3em auto 0 auto;
+  }
+  .btn-container {
+    margin: 0 auto;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+
+    button {
+      height: fit-content;
+      padding: 0.75em 1.25em;
+    }
+
+  }
+
+  .task-footer {
+    width: 100%;
+    height: 80px;
+    background-color: green;
   }
 }

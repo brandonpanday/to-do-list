@@ -172,22 +172,55 @@ main .task-container {
           flex-direction: column;
 }
 .add-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   position: absolute;
-  top: 100px;
+  top: 200px;
   margin: 0 auto;
   z-index: 9999;
   background-color: red;
-  padding: 20px 40px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.add-container .task-header {
+  width: 100%;
+  height: 80px;
+  background-color: green;
 }
 .add-container .note-input {
-  width: 300px;
+  width: 80%;
+  border: 1px solid black;
+  height: 2em;
+  margin: 3em auto 0 auto;
 }
-.add-container button {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+.add-container .btn-container {
+  margin: 0 auto;
+  background-color: blue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.add-container .btn-container button {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 0.75em 1.25em;
+}
+.add-container .task-footer {
+  width: 100%;
+  height: 80px;
+  background-color: green;
 }
