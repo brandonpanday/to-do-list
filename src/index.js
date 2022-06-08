@@ -3,6 +3,7 @@ import "./css/fonts.css";
 import "./css/style.css";
 import Instagram from "./assets/instagram.png";
 import printMe from "./print.js";
+import { ProjectFactory, Controller } from './print.js';
 
 let container = () => {
   let container = document.createElement('div');
@@ -10,6 +11,7 @@ let container = () => {
   container.append(loadHeader(), loadMain());
   return container;
 }
+
 let loadHeader = () => {
   let headerContainer = document.createElement('section');
   headerContainer.classList.add('header-container');
@@ -42,6 +44,7 @@ let loadHeader = () => {
   nav.append(projectsHeader, loadProjects());
 
   let footer = document.createElement('footer');
+  footer.innerText = "Add Project";
   headerContainer.append(header, nav, footer);
   return headerContainer;
 };
@@ -58,25 +61,79 @@ let loadAnalytics = () => {
 let loadProjects = () => {
   let projectsContainer = document.createElement('div');
   projectsContainer.classList.add('projects-container');
-  let projectOne = document.createElement('span');
-  /* Project creation method */
-  projectOne.innerText = "Test";
-  projectOne.classList.add("category");
-  projectsContainer.append(projectOne);
   return projectsContainer;
 }
 let loadMain = () => {
   let main = document.createElement('main');
   let infoBar = document.createElement('div');
   infoBar.classList.add('info-bar');
+  
+  let projectPath = document.createElement('div');
+  let dotDotSlash = document.createElement('span');
+  dotDotSlash.classList.add('active-logo');
+  dotDotSlash.innerText = "../";
   let activeProject = document.createElement('span');
   activeProject.innerText = "Project Title";
   activeProject.classList.add('active-project');
-  infoBar.append(activeProject);
+  projectPath.append(dotDotSlash, activeProject);
+
+  let projectControls = document.createElement('div');
+  let newTaskBtn = document.createElement('button');
+  newTaskBtn.classList.add('new-task-btn');
+  newTaskBtn.innerText = "+ Note";
+  projectControls.append(newTaskBtn);
+  infoBar.append(projectPath, projectControls);
 
   let taskContainer = document.createElement('section');
   taskContainer.classList.add('task-container');
   main.append(infoBar, taskContainer);
   return main;
 }
+
+
+
+// Test addProjects
+let addProjectsToDom = () => {
+  let projContainer = document.querySelector('.projects-container');
+  Controller.projectArray.forEach(p => {
+    let newProj = document.createElement('span');
+    newProj.classList.add('category');
+    newProj.innerText = p.getName();
+    projContainer.append(newProj);
+  });
+}
+
+let loadAddTask = () => {
+  let addContainer = document.createElement('div');
+  addContainer.classList.add('add-container');
+  let noteInput = document.createElement('input');
+  noteInput.type = 'text';
+  noteInput.classList.add('note-input');
+  let btnAdd = document.createElement('button');
+  btnAdd.innerText = "Add";
+  btnAdd.classList.add('btn-add');
+  let btnCancel = document.createElement('button');
+  btnCancel.innerText = "Cancel";
+  btnCancel.classList.add('btn-cancel');
+
+  addContainer.append(noteInput, btnAdd, btnCancel);
+  return addContainer;
+}
+
 document.body.append(container());
+
+let main = document.querySelector('main');
+main.append(loadAddTask());
+
+let projOne = ProjectFactory("project one");
+projOne.addNote("TestNote");
+projOne.addNote("Test Two");
+projOne.getNotes();
+
+let taco = ProjectFactory("PROJ ONE");
+Controller.addProject(taco);
+console.log(Controller.projectArray);
+
+addProjectsToDom();
+
+loadAddTask();

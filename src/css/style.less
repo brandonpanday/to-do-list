@@ -33,13 +33,13 @@ body {
   
     h3 {
       color: #3084F2;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-family: 'Open Sans', sans-serif;
     }
   
     p {
       color: rgb(90,90,90);
-      font-size: 0.9em;
-      font-family: sans-serif;
+      font-size: 1em;
+      font-family: 'Open Sans', sans-serif;
       letter-spacing: 1px;
     }
     
@@ -47,16 +47,16 @@ body {
 }
 nav {
   width: 100%;
-  min-height: 700px;
+  min-height: 600px;
   height: ~"calc(100vh - 180px - 50px)";
   background-color: rgb(250,250,250);
   overflow-y: auto;
 
   .category {
     color: #7f7f7f;
-    font-size: 1.1em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400 ;
+    font-size: 1em;
+    // font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-direction: column;
     margin: 1em auto;
@@ -80,6 +80,7 @@ nav {
     padding: 0.5em 1em;
     text-transform: uppercase;
     font-family: "Roboto", sans-serif;
+    // font-family: 'Open Sans', sans-serif;
     font-weight: 500;
   }
 
@@ -90,38 +91,76 @@ nav {
   }
 }
 footer {
-  width: 320px;
+  width: 300px;
   height: 50px;
-  background-color: #4b94f2;
+  background-color: #3084F2;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-top: 1px solid rgb(171,176,190);
 }
 main {
-  min-width: 600px;
+  min-width: 850px;
   width: ~"calc(100vw - 300px)";
   height: 100vh;
-  background-color: #f9f9f9;
+  background-color: lightgray;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   .info-bar {
-    width: 500px;
-    height: 1.5em;
-    margin: 2em 0 1em 3em;
-    align-self: flex-start;
+    width: 800px;
+    height: 100px;
+    margin: 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    .active-logo {
+      color: #7f7f7f;
+      font-weight: 700;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin: 0 0 0 0;
+      letter-spacing:  1px;
+    }
     .active-project {
       color: #3084F2;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-weight: 700;
-      letter-spacing: 1px;
-      font-size: 1.1em;
+      font-size: 1em;
     }
   }
 
   .task-container {
-    width: 550px;
-    height: 550px;
-    background-color: red;
+    width: 800px;
+    height: ~"calc(100vh - 100px - 50px)";
+    background-color: white;
     margin: 1em 3em;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.add-container {
+  display: flex;
+  position: absolute;
+  top: 100px;
+  margin: 0 auto;
+  z-index: 9999;
+  background-color: red;
+  padding: 20px 40px;
+
+  .note-input {
+    width: 300px;
+  }
+  button {
+    width:fit-content;
+    padding: 0.75em 1.25em;
   }
 }
