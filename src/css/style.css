@@ -140,7 +140,7 @@ main .info-bar .active-project {
   font-size: 1em;
 }
 main .note-container {
-  width: 600px;
+  width: 650px;
   padding: 0.75em 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -153,10 +153,10 @@ main .note-container {
 main .note-container p {
   font-weight: 700;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 main .note-container .trash-can-icon {
-  height: 18px;
+  height: 20px;
   cursor: pointer;
 }
 main .note-container:hover {
@@ -174,7 +174,7 @@ main .task-container {
   margin-left: 1em;
 }
 main .add-container {
-  width: 600px;
+  width: 650px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -194,10 +194,10 @@ main .add-container .add-controls {
           justify-content: space-evenly;
 }
 main .add-container input {
-  width: 450px;
+  width: 520px;
   font-weight: 500;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.9em;
+  font-size: 1em;
   margin-right: 0.5em;
 }
 main .add-container button {
@@ -207,6 +207,9 @@ main .add-container button {
   border: 1px solid black;
   margin: 0 0.2em;
   border-radius: 5px;
-  background-color: #363947;
+  background-color: #313034;
   color: #f9f9f9;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.1em;
 }

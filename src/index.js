@@ -21,9 +21,9 @@ const loadHeader = () => {
   let logo = document.createElement('div');
   logo.classList.add('logo');
   let title = document.createElement('h3');
-  title.innerText = "TitleHere";
+  title.innerText = "Do!t.app";
   let subtitle = document.createElement('p');
-  subtitle.innerText = "Subtitle here";
+  subtitle.innerText = "Created by Brandon P.";
   header.append(logo, title, subtitle);
   let nav = document.createElement('nav');
   nav.classList.add('nav');
@@ -76,7 +76,7 @@ const loadMain = () => {
   let addControls = document.createElement('div');
   addControls.classList.add('add-controls');
   let addBtn = document.createElement('button');
-  addBtn.innerText = "Add";
+  addBtn.innerText = "+";
   addBtn.classList.add('add-btn');
   addBtn.addEventListener('click', e=> {
     let noteInput = newInput.value;
@@ -93,7 +93,7 @@ const loadMain = () => {
   cancelBtn.addEventListener("click", e=> {
     newInput.value = "";
   })
-  cancelBtn.innerText = "Cancel";
+  cancelBtn.innerText = "x";
   addControls.append(addBtn, cancelBtn);
   addContainer.append(newInput, addControls);
 
