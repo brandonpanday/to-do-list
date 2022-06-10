@@ -1,9 +1,8 @@
 import "./css/reset.css";
 import "./css/fonts.css";
 import "./css/style.css";
-import Instagram from "./assets/instagram.png";
-import printMe from "./print.js";
-import { ProjectFactory, Controller } from './print.js';
+import TrashIcon from "./assets/trash-can.png";
+import { ProjectFactory, Controller, addNoteToProject, deleteNote } from './print.js';
 
 let container = () => {
   let container = document.createElement('div');
@@ -73,23 +72,67 @@ let loadMain = () => {
   dotDotSlash.classList.add('active-logo');
   dotDotSlash.innerText = "../";
   let activeProject = document.createElement('span');
-  activeProject.innerText = "Project Title";
+  activeProject.innerText = "Dashboard";
   activeProject.classList.add('active-project');
   projectPath.append(dotDotSlash, activeProject);
 
-  let projectControls = document.createElement('div');
-  let newTaskBtn = document.createElement('button');
-  newTaskBtn.classList.add('new-task-btn');
-  newTaskBtn.innerText = "+ Note";
-  projectControls.append(newTaskBtn);
-  infoBar.append(projectPath, projectControls);
+
+  infoBar.append(projectPath);
 
   let taskContainer = document.createElement('section');
   taskContainer.classList.add('task-container');
-  main.append(infoBar, taskContainer);
+  
+  let addContainer = document.createElement('div');
+  let newInput = document.createElement('input');
+  let addBtn = document.createElement('button');
+  addBtn.innerText = "Add";
+  addBtn.classList.add('add-btn');
+
+  addBtn.addEventListener('click', e => {
+    let noteContent = newInput.value;
+    console.log(noteContent);
+    console.log(activeProject.innerText);
+    addNoteToProject(activeProject.innerText, noteContent);
+  })
+
+  let cancelBtn = document.createElement('button');
+  cancelBtn.innerText = "Cancel";
+  addContainer.classList.add('add-container');
+  addContainer.append(newInput, addBtn, cancelBtn);
+
+  main.append(infoBar, taskContainer, addContainer);
   return main;
 }
 
+
+
+let loadProjectNotes = (proj) => {
+  let taskContainer = document.querySelector('.task-container');
+  taskContainer.replaceChildren();
+  proj.noteArray.forEach(note => {
+    let noteContainer = document.createElement('div');
+    noteContainer.classList.add('note-container');
+    let noteText = document.createElement('p');
+    noteText.innerText = note;
+    const trashIcon = new Image();
+    trashIcon.classList.add('trash-can-icon');
+    trashIcon.src = TrashIcon;
+
+    trashIcon.addEventListener ("click", e => {
+      let activeProject = document.querySelector('.active-project').innerText;
+      let noteContent = e.explicitOriginalTarget.parentNode.textContent;
+      deleteNote(activeProject, noteContent);
+    })
+
+    noteContainer.append(noteText, trashIcon);
+    taskContainer.append(noteContainer);
+  })
+}
+
+let toggleActiveProject = (project) => {
+  let activeProject = document.querySelector('.active-project');
+  activeProject.innerText = project;
+}
 
 
 // Test addProjects
@@ -99,47 +142,33 @@ let addProjectsToDom = () => {
     let newProj = document.createElement('span');
     newProj.classList.add('category');
     newProj.innerText = p.getName();
+    newProj.dataset.projId = p.getName();
+    newProj.addEventListener('click', e => {
+      Controller.projectArray.forEach(p => {
+        if (newProj.dataset.projId == p.getName()) {
+          console.log(p.noteArray);
+          toggleActiveProject(p.getName());
+          loadProjectNotes(p);
+        }
+      })
+    })
     projContainer.append(newProj);
   });
-}
+};
 
-let loadAddTask = () => {
-  let addContainer = document.createElement('div');
-  addContainer.classList.add('add-container');
-  let header = document.createElement('div');
-  header.classList.add('task-header');
-  let noteInput = document.createElement('input');
-  noteInput.type = 'text';
-  noteInput.classList.add('note-input');
-  let btnContainer = document.createElement('div');
-  btnContainer.classList.add('btn-container');
-  let btnAdd = document.createElement('button');
-  btnAdd.innerText = "Add";
-  btnAdd.classList.add('btn-add');
-  let btnCancel = document.createElement('button');
-  btnCancel.innerText = "Cancel";
-  btnCancel.classList.add('btn-cancel');
-  btnContainer.append(btnAdd, btnCancel);
-  let footer = document.createElement('div');
-  footer.classList.add('task-footer');
-  addContainer.append(header, noteInput, btnContainer, footer);
-  return addContainer;
-}
 
 document.body.append(container());
-
-let main = document.querySelector('main');
-main.append(loadAddTask());
 
 let projOne = ProjectFactory("project one");
 projOne.addNote("TestNote");
 projOne.addNote("Test Two");
-projOne.getNotes();
+Controller.addProject(projOne);
 
-let taco = ProjectFactory("PROJ ONE");
-Controller.addProject(taco);
-console.log(Controller.projectArray);
-
+let projTwo = ProjectFactory("project two");
+projTwo.addNote("test one");
+projTwo.addNote("test two");
+Controller.addProject(projTwo);
 addProjectsToDom();
 
-loadAddTask();
+
+

@@ -1,16 +1,10 @@
 const ProjectFactory = (name) => {
   let noteArray = [];
   const getName = () => name;
-  const getNotes = () => {
-    noteArray.forEach(note => {
-      console.log(note);
-      return note;
-    })
-  }
   const addNote = (desc) => {
-    noteArray.push(desc);
+    noteArray.unshift(desc);
   }
-  return { getName, getNotes, addNote };
+  return { getName, noteArray, addNote };
 };
 
 const Controller = (() => {
@@ -25,4 +19,28 @@ const Controller = (() => {
   return { projectArray, addProject };
 })();
 
-export { ProjectFactory, Controller };
+
+const addNoteToProject = (ap, nc) => {
+  Controller.projectArray.forEach(p => {
+    if (ap == p.getName()) {
+      p.addNote(nc);
+    }
+  })
+}
+
+const deleteNote = (ap, nc) => {
+  Controller.projectArray.forEach(p => {
+    if (ap == p.getName()) {
+      p.noteArray.forEach(n => {
+        if (n == nc) {
+          let i = p.noteArray.indexOf(n);
+          p.noteArray.splice(i, 1);
+          console.log(p.noteArray);
+        }
+      })
+    }
+  })
+}
+
+export { ProjectFactory, Controller, addNoteToProject, deleteNote };
+
