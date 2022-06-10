@@ -24,6 +24,7 @@ const addNoteToProject = (ap, nc) => {
   Controller.projectArray.forEach(p => {
     if (ap == p.getName()) {
       p.addNote(nc);
+      return p;
     }
   })
 }
