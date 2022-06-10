@@ -23,6 +23,7 @@ body {
     justify-content: center;
     width: 100%;
     height: 160px;
+    padding: 1em;
 
     .logo {
       width: 60px;
@@ -45,33 +46,71 @@ body {
 }
 nav {
   width: 100%;
-  height: ~"calc(100% - 160px)";
+  height: ~"calc(100vw - 160px)";
   background-color: rgb(250,250,250);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow-y: scroll;
+
+  .project-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .new-proj-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0.5em 0;
+
+    input {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9em;
+    }
+  }
+
+  .projects-header {
+    color: #7f7f7f;
+    font-size: 1.2em;
+    font-weight: 100;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0.5em 0 0.5em 1em;
+    display: inline-block;
+  }
+
+  .add-to-inbox {
+    height: 24px;
+    display: inline-block;
+    margin-right: 1em;
+    cursor: pointer;
+  }
 
   .navigation-header {
     color: #7f7f7f;
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 100;
     font-family: 'Open Sans', sans-serif;
-    padding: 0.5em 0;
+    padding: 0.5em 0 0.5em 1em;
   }
 
   .category {
     color: #7f7f7f;
     font-size: 1em;
     font-family: 'Open Sans', sans-serif;
-    padding: 0.75em 1.5em;
-    margin: 0.25em 0;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .trash-blue {
+      height: 24px;
+      display: inline-block;
+      cursor: pointer;
+    }
 
   }
   .category:hover {
     color: #1271eb;
     background-color: rgba(149,192,247, 0.3);
-    border-radius: 8px;
-    cursor: pointer;
   }
 }
 
@@ -108,7 +147,7 @@ main {
   }
 
   .note-container {
-    width: 650px;
+    width: 500px;
     padding: 0.75em 1em;
     display: flex;
     justify-content: space-between;
@@ -133,15 +172,15 @@ main {
     background-color: white;
     display: flex;
     flex-direction: column;
-    margin-left: 1em;
+    padding: 0 2em;
   }
 
   .add-container {
-    width: 650px;
+    width: 500px;
+    padding: 0.75em 1em;
     display: flex;
     justify-content: space-between;
-    margin-left: 1em;
-    padding: 0.75em 1em;
+    margin-left: 2em;
     display: none;
 
     .add-controls {
@@ -150,11 +189,12 @@ main {
     }
 
     input {
-      width: 520px;
+      width: 400px;
       font-weight: 500;
       font-family: 'Open Sans', sans-serif;
       font-size: 1em;
       margin-right: 0.5em;
+      border-radius: 8px;
     }
 
     button {

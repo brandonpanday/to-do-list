@@ -41,6 +41,7 @@ body {
           justify-content: center;
   width: 100%;
   height: 160px;
+  padding: 1em;
 }
 .header-container .header .logo {
   width: 60px;
@@ -63,38 +64,79 @@ body {
 }
 nav {
   width: 100%;
-  height: calc(100% - 160px);
+  height: calc(100vw - 160px);
   background-color: #fafafa;
+  overflow-y: scroll;
+}
+nav .project-header-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-nav .navigation-header {
+nav .new-proj-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 0.5em 0;
+}
+nav .new-proj-container input {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9em;
+}
+nav .projects-header {
   color: #7f7f7f;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 100;
   font-family: 'Open Sans', sans-serif;
-  padding: 0.5em 0;
+  padding: 0.5em 0 0.5em 1em;
+  display: inline-block;
+}
+nav .add-to-inbox {
+  height: 24px;
+  display: inline-block;
+  margin-right: 1em;
+  cursor: pointer;
+}
+nav .navigation-header {
+  color: #7f7f7f;
+  font-size: 1.2em;
+  font-weight: 100;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0.5em 0 0.5em 1em;
 }
 nav .category {
   color: #7f7f7f;
   font-size: 1em;
   font-family: 'Open Sans', sans-serif;
-  padding: 0.75em 1.5em;
-  margin: 0.25em 0;
+  padding: 1em 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+nav .category .trash-blue {
+  height: 24px;
+  display: inline-block;
+  cursor: pointer;
 }
 nav .category:hover {
   color: #1271eb;
   background-color: rgba(149, 192, 247, 0.3);
-  border-radius: 8px;
-  cursor: pointer;
 }
 main {
   width: calc(100vw - 300px);
@@ -140,7 +182,7 @@ main .info-bar .active-project {
   font-size: 1em;
 }
 main .note-container {
-  width: 650px;
+  width: 500px;
   padding: 0.75em 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -171,18 +213,18 @@ main .task-container {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-left: 1em;
+  padding: 0 2em;
 }
 main .add-container {
-  width: 650px;
+  width: 500px;
+  padding: 0.75em 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-left: 1em;
-  padding: 0.75em 1em;
+  margin-left: 2em;
   display: none;
 }
 main .add-container .add-controls {
@@ -194,11 +236,12 @@ main .add-container .add-controls {
           justify-content: space-evenly;
 }
 main .add-container input {
-  width: 520px;
+  width: 400px;
   font-weight: 500;
   font-family: 'Open Sans', sans-serif;
   font-size: 1em;
   margin-right: 0.5em;
+  border-radius: 8px;
 }
 main .add-container button {
   all: unset;

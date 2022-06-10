@@ -9,14 +9,22 @@ const ProjectFactory = (name) => {
 
 const Controller = (() => {
   let projectArray = [];
-  const addProject = (project) => projectArray.push(project);
+  const addProject = (project) => projectArray.unshift(project);
   const getProjects = (project) => {
     project.forEach(p => {
       console.log(p);
       return p;
     })
   }
-  return { projectArray, addProject };
+  const deleteProject = (proj) => {
+    projectArray.forEach(p => {
+      if (proj == p.getName()) {
+        let i = projectArray.indexOf(p);
+        projectArray.splice(i, 1);
+      }
+    })
+  }
+  return { projectArray, addProject, deleteProject };
 })();
 
 
