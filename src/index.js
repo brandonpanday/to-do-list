@@ -4,7 +4,7 @@ import "./css/style.css";
 import TrashIcon from "./assets/trash-can.png";
 import AddProjectIcon from "./assets/addToInbox.png";
 import TrashBlue from "./assets/trash-blue.png";
-import { ProjectFactory, Controller, addNoteToProject, deleteNote } from './print.js';
+import { ProjectFactory, Controller, addNoteToProject, deleteNote, initializeObjects } from './print.js';
 
 const container = () => {
   let container = document.createElement('div');
@@ -199,20 +199,26 @@ const addProjectsToDom = () => {
   });
 };
 
-document.body.append(container());
+
+
+window.onload = () => {
+  document.body.append(container());
+  initializeObjects();
+  addProjectsToDom();
+}
 
 
 // Projects
-let projOne = ProjectFactory("project one");
-projOne.addNote("TestNote");
-projOne.addNote("Test Two");
-Controller.addProject(projOne);
+// let projOne = ProjectFactory("project one");
+// projOne.addNote("TestNote");
+// projOne.addNote("Test Two");
+// Controller.addProject(projOne);
 
-let projTwo = ProjectFactory("project two");
-projTwo.addNote("test one");
-projTwo.addNote("test two");
-Controller.addProject(projTwo);
-addProjectsToDom();
+// let projTwo = ProjectFactory("project two");
+// projTwo.addNote("test one");
+// projTwo.addNote("test two");
+// Controller.addProject(projTwo);
+// addProjectsToDom();
 
 
 // <a target="_blank" href="https://icons8.com/icon/124438/add-to-inbox">Add to Inbox</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
